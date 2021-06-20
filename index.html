@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Papers Scissors</title>
+
+    <style>
+        .image-wrapper {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .image-button {
+
+            border: 5px solid;
+            border-radius: 20px;
+            box-shadow: 5px 5px 8px 0px #b3a8a8;
+            cursor: pointer;
+        }
+
+        .button-play {
+            font-size: 40px;
+            background-color: aqua;
+            border: 5px solid green;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+
+    <div class='image-wrapper'>
+        <img src="rock.png" class="image-button" height="300" width="200" id="rock-id">
+        <img src="paper.png" class="image-button"height="300" width="200" id="paper-id">
+        <img src="scissors.png" class="image-button" height="300" width="200" id="scissors-id">
+    </div>
+    <br><br><br>
+    
+    
+
+    
+    <div style="text-align: center;">
+        <button type="button" id="button-id" class="button-play">Play</button>
+    </div>
+    
+
+
+    <script>
+
+        let selectedImageId = '';
+
+        const gameOperation = (event) => {
+
+
+
+            if (event.target.classList.contains('image-button')) {
+                
+
+                document.querySelector('#rock-id').style.borderColor = 'black';
+                document.querySelector('#paper-id').style.borderColor = 'black';
+                document.querySelector('#scissors-id').style.borderColor = 'black';
+
+                
+
+                event.target.style.borderColor = 'blue';
+
+                selectedImageId = event.target.id;
+                
+                
+            }
+
+            if (selectedImageId === '') {
+                return;
+            }
+
+
+            if (event.target.id === 'button-id') {
+
+                let gameArr = ['rock-id', 'paper-id', 'scissors-id'];
+
+
+                let answer = gameArr[parseInt(Math.random() * gameArr.length)];
+
+
+                if (selectedImageId === answer) {
+                    alert('won');
+
+                } else {
+                    alert('try again');
+                }
+
+                document.querySelector('#rock-id').style.borderColor = 'black';
+                document.querySelector('#paper-id').style.borderColor = 'black';
+                document.querySelector('#scissors-id').style.borderColor = 'black';
+
+                selectedImageId = '';
+
+
+
+            }
+
+
+            
+
+        }
+      
+      document.body.addEventListener('click', gameOperation)
+
+
+    </script>
+</body>
+</html>
